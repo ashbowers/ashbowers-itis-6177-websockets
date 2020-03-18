@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 io.on('connection', function(socket){
   console.log('a user connected');
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+    console.log('message: '+socket.id+':'+ msg);
     io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
@@ -21,6 +21,6 @@ io.on('connection', function(socket){
 });
 
 
-http.listen(3002, function(){
-  console.log('listening on *:3002');
+http.listen(3000, function(){
+  console.log('listening on *:3000');
 });
